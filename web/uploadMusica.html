@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+            function VerificaDados()
+            {   
+              
+               nome=document.getElementById("nome").value;
+               cantor=document.getElementById("cantor").value;
+               
+             
+                i=0;
+                while(i<nome.length&&nome.charAt(i)!='@'&&
+                nome.charAt(i)!='*'&&nome.charAt(i)!='!'&&nome.charAt(i)!='%'&&nome.charAt(i)!=';'&&
+                nome.charAt(i)!=':'&&nome.charAt(i)!='.'&&nome.charAt(i)!='$'&&nome.charAt(i)!='('
+                &&nome.charAt(i)!=')'&&nome.charAt(i)!='#'&&nome.charAt(i)!='^'&&nome.charAt(i)!='~')i++;
+        
+                if(i==nome.length)
+                {
+                  
+                   i=0;
+                 while(i<cantor.length&&cantor.charAt(i)!='@'&&
+                 cantor.charAt(i)!='*'&&cantor.charAt(i)!='!'&&cantor.charAt(i)!='%'&&cantor.charAt(i)!=';'&&
+                 cantor.charAt(i)!=':'&&cantor.charAt(i)!='.'&&cantor.charAt(i)!='$'&&cantor.charAt(i)!='('
+                 &&cantor.charAt(i)!=')'&&cantor.charAt(i)!='#'&&cantor.charAt(i)!='^'&&cantor.charAt(i)!='~')i++;
+                    
+                    if(i==cantor.length)
+                    document.form1.action="UpServlet";
+                    else
+                   alert("O nome do antor não pode possuir caracter especiais(@!*!%;:.#&$~)");
+
+                     
+                }
+                 else
+                 alert("O nome da musica não pode possuir caracter especiais(@!*!%;:.#&$~)");
+                 
+                  
+                
+            }
+        </script>
+
+        </head>
+
+
+
+    <body>
+
+        <div class="container">
+            <h2>Enviar Musica</h2>
+            <form  method="POST" name="form1" enctype="multipart/form-data" >
+                <div class="form-group">
+                    <label for="arquivo">Arquivo</label>
+                    <input type="file" name="file" id="file"  />
+                </div>
+                 
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" required="" class="form-control" id="nome" name="nome" placeholder="Enter nome musica">
+                </div>
+                <div class="form-group">
+                    <label for="cantor">Cantor:</label>
+                    <input type="text"  required="" class="form-control" id="cantor" name="cantor" placeholder="Enter cantor">
+                </div>
+                
+                <div class="form-group">
+                    <label for="estilo">Estilos:</label>
+                    <select name="estilo">
+                        <option>Axé</option>
+                        <option>Black Music</option>
+                        <option>Blues</option>
+                        <option>Classic Rock</option>
+                        <option>Clássico</option>
+                        <option>Country</option>
+                        <option>Dance</option>
+                        <option>Eletroncia</option>
+                        <option>Rap</option>
+                        <option>Pagode</option>
+                        <option>Sertanejo</option>
+                        <option>Pop</option>
+                        <option>Pop/Punk</option>
+                        <option>Pop/Rock</option>
+                        <option>Hip Hop</option>
+                        <option>Raggae</option>
+                        <option>Rock</option>
+                        <option>Samba</option>
+                        <option>Funk</option>
+                        <option>Funk Carioca</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-default" onclick="VerificaDados()"  >Upload</button>
+            </form>
+        </div>
+
+    </body> 
+</html>
